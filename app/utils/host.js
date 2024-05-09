@@ -1,0 +1,1 @@
+export const hosturl = `https://medpharm-be.onrender.com`
