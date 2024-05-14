@@ -9,7 +9,7 @@ interface Comp{
     }
 }
 
-const Provider =({ components, pageProps}: Comp)=>{
+export const Provider =({ components, pageProps}: Comp)=>{
     return (
         <SessionProvider session={pageProps.session}>
             {components}

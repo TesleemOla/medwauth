@@ -5,7 +5,7 @@ import AuthButton from "./AuthButton";
 
 const NavBar =()=>{
     return(
-        <nav>
+        <nav className="py-4">
             <Link href="/">
                 HomePage
             </Link>
