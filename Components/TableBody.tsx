@@ -7,10 +7,10 @@ import React from "react"
     heading4: String,
     heading5: String,
     heading6: String,
-    heading7: String,
-    heading8: String,
-    heading9: String,
-    heading10: String
+     heading7: String | undefined,
+     heading8: String | undefined,
+     heading9: String | undefined,
+     heading10: String | undefined
 }
 const TableBody = ({
     heading1, heading2, heading3, heading4, heading5,

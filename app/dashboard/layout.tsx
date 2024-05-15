@@ -6,22 +6,22 @@ import SummaryCard from "@/Components/SummaryCard";
 
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
-    return <div className="mx-10">
+    return (<div className="mx-10">
             
             <NavBar/>
         <div className="flex flex-row justify-between ">
 
-            <SummaryCard></SummaryCard>
-            <SummaryCard></SummaryCard>
-            <SummaryCard></SummaryCard>
+            {/* <SummaryCard Headdet={"Drugs"} icon={} data={19} />
+            <SummaryCard Headdet={"Categories"} data={25} icon={}/>
+            <SummaryCard Headdet={"Industries"} data={40} icon={}/> */}
         </div>
-        <section className="flex flex-row">
+        <div className="flex flex-row">
                 <SideNav />
                 <table className="mx-2">
                 {children}
                 </table>
-            </section>
-        </div>
+            </div>
+        </div>)
     
 }
 

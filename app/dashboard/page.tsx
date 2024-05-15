@@ -11,7 +11,6 @@ const DashboardPage = () => {
   //   // Redirect to login page if not authenticated
   //   return <p>Please log in to access the dashboard.</p>;
   // }
-  const args = ["tuple", "stroms", "treps", "locod", "iofna"]
   // Render your dashboard content here
   return (
     // <Provider session={session}>

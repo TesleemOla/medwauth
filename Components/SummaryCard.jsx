@@ -6,7 +6,7 @@ const SummaryCard = ({ Headdet, data, icon}) => {
     <div className="card w-60 bg-base-100 shadow-xl">
        
         <div className="card-body">
-          <Image src={icon} alt={icon} />
+          <Image src={icon} alt={icon} width={300} />
             <h2 className="card-title">{Headdet}</h2>
             <p>{data}</p>
           
