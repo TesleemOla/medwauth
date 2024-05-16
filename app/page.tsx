@@ -3,7 +3,7 @@ import { SessionProvider, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
   return (
-    <SessionProvider>
+    
     <div>
     <h1>
       Home
@@ -12,6 +12,6 @@ export default function Home() {
       <button onClick={() => signOut()}>Log Out</button>
 
     </div>
-    </SessionProvider>
+    
   );
 }

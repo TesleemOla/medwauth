@@ -2,26 +2,24 @@
 import NavBar from "@/Components/NavBar";
 import SideNav from "@/Components/SideNav";
 import SummaryCard from "@/Components/SummaryCard";
+import { Provider } from "../Provider";
 
 
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
-    return (<div className="mx-10">
-            
-            <NavBar/>
-        <div className="flex flex-row justify-between ">
-
-            {/* <SummaryCard Headdet={"Drugs"} icon={} data={19} />
-            <SummaryCard Headdet={"Categories"} data={25} icon={}/>
-            <SummaryCard Headdet={"Industries"} data={40} icon={}/> */}
-        </div>
-        <div className="flex flex-row">
+    return (
+    <Provider>
+        <div className="mx-10">
+                <NavBar />
+                <div className="flex flex-row justify-left mr-5">
                 <SideNav />
-                <table className="mx-2">
+                <table>
                 {children}
                 </table>
-            </div>
-        </div>)
+                </div>
+                
+        </div>
+    </Provider>)
     
 }
 
