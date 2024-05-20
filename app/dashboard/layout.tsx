@@ -13,9 +13,9 @@ export default function DashboardLayout({ children }:any) {
                 <NavBar />
                 <div className="flex flex-row justify-left mr-5">
                 <SideNav />
-                <table>
+                <>
                 {children}
-                </table>
+                </>
                 </div>
                 
         </div>
