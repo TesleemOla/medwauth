@@ -1,17 +1,19 @@
-
+"use client"
 import NavBar from "@/Components/NavBar";
 import SideNav from "@/Components/SideNav";
 import SummaryCard from "@/Components/SummaryCard";
 import { Provider } from "../Provider";
 
 
+
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
+
     return (
     <Provider>
         <div className="mx-10">
                 <NavBar />
-                <div className="flex flex-row justify-left mr-5">
+                <div className="flex flex-row gap-10 justify-left mr-5">
                 <SideNav />
                 <>
                 {children}

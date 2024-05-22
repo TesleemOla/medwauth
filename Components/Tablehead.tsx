@@ -16,14 +16,14 @@ const Tablehead = (props: headingType) => {
   return (
     <thead>
             <tr>
-                <th>{props.heading1}</th>
-                <th>{props.heading2}</th>
-                <th>{props.heading3}</th>
-                <th>{props.heading4}</th>
-                <th>{props.heading5}</th>
-                <th>{props.heading6}</th>
-                <th>{props.heading7}</th>
-                <th>{props.heading8}</th>
+                <th scope="col">{props.heading1}</th>
+                <th scope="col">{props.heading2}</th>
+                <th scope="col">{props.heading3}</th>
+                <th scope="col">{props.heading4}</th>
+                <th scope="col">{props.heading5}</th>
+                <th scope="col">{props.heading6}</th>
+                <th scope="col">{props.heading7}</th>
+                <th scope="col">{props.heading8}</th>
             </tr>
     </thead>
   )
