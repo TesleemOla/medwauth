@@ -4,14 +4,13 @@ import AuthButton from "./AuthButton";
 
 import React from "react";
 import Link from "next/link";
-import { useSession, getSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
 
 
 const Navbar = () => {
 
     const  {data, status} = useSession()
-    
 
     return (
         <div className="w-full h-20 bg-gray-800 sticky top-0">
