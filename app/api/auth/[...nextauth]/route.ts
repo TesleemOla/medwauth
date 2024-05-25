@@ -2,7 +2,8 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { hosturl } from "@/utils/host"
-import { setCookie } from "cookies-next"
+import { getCookie, setCookie } from "cookies-next"
+
 
 
 const handler = NextAuth({
@@ -45,11 +46,11 @@ const handler = NextAuth({
             return { ...token, ...user}
         },
         async session({ session, user, token}){
-            // session.user = token;
-            setCookie("token",token, {httpOnly:true})
+            session.user = token;
             return session
         }
-    }
+    },
+    secret: process.env.AUTH_SECRET
 })
 
 export { handler as GET, handler as POST }

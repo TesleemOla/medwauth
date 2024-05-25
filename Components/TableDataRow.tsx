@@ -7,25 +7,16 @@ import React from "react"
     data4: String,
     data5: String,
     data6: String,
-     data7: String | undefined,
-     data8: String | undefined,
-     data9: String | undefined,
-     data10: String | undefined
+     data7: String | null,
+     data8: String | null,
+     data9: String | null,
+     data10: String | null
 }
-const TableRow = ({
-    data1, data2, data3, data4, data5,
-    data6, data7, data8
-}: dataType)=>{
+const TableRow = (props: dataType)=>{
+    const data = Object.keys(props)
     return (
         <tr>
-           <td>{data1}</td>
-           <td>{data2}</td>
-           <td>{data3}</td>
-           <td>{data4}</td>
-           <td>{data5}</td>
-           <td>{data6}</td>
-           <td>{data7}</td>
-           <td>{data8}</td>          
+          {data.map((item,i)=> <td key={i}>{item[i]}</td>)}        
         </tr>
     )
 }

@@ -4,16 +4,14 @@ import AuthButton from "./AuthButton";
 
 import React from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react"
-import { setCookie } from "cookies-next";
+import { useSession, getSession } from "next-auth/react"
+
+
 
 const Navbar = () => {
 
-    const  {data} = useSession()
-    if(data){
-    setCookie("token", data.user.token, { httpOnly: true })
+    const  {data, status} = useSession()
     
-    }
 
     return (
         <div className="w-full h-20 bg-gray-800 sticky top-0">

@@ -9,6 +9,7 @@ import { Provider } from "../Provider";
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
 
+
     return (
     <Provider>
         <div className="mx-10">
@@ -21,7 +22,8 @@ export default function DashboardLayout({ children }:any) {
                 </div>
                 
         </div>
-    </Provider>)
+     </Provider>
+    )
     
 }
 
