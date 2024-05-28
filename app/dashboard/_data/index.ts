@@ -10,6 +10,8 @@ export default async function FetchAllItems (token: string, item: string) {
             Authorization: `Bearer ${token}`
         }
     })
+
     const response = await data.json()
+    
     return response.data
 }

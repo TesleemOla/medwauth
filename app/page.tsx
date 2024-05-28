@@ -1,16 +1,23 @@
 "use client"
-import { SessionProvider, signIn, signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
+import Link from "next/link";
+
 
 export default function Home() {
+
+ 
   return (
     
-    <div>
-    <h1>
+    <div className="flex flex-col">
+    <Link href="/">
       Home
-    </h1>
-      <button onClick={()=> signIn()}>Log In</button>
-      <button onClick={() => signOut()}>Log Out</button>
-
+    </Link>
+    <Link href="dashboard">
+      Dashboard 
+    </Link>
+      <button onClick={() => signOut()} >Log Out</button>
+      <button onClick={() => signIn()} >Log In</button>
+     
     </div>
     
   );
