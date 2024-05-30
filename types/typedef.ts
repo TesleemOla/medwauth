@@ -41,3 +41,15 @@ export interface CategoryData{
     name: String,
     description: String
 }
+
+export interface ClientData{
+    _id: Object,
+    customerName: String,
+        contactEmail: String,
+            phoneNumber: String,
+                officeAddress: String,
+                    city: String,
+                        state: String,
+                            adminId: number|string
+    
+}

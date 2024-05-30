@@ -24,7 +24,7 @@ useEffect(()=>{
 
   }
   const apiData = dataGetter()
-  apiData.then(res => setDataObj(res.reverse()))
+  apiData.then(res => setDataObj(res))
 },[session])
 
   

@@ -2,4 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* .flex-center{
+    @apply flex justify-center align-middle
+}
+.flex-col{
+    @apply flex flex-col
+}
+.flex-row{
+    @apply flex flex-row
+} */
