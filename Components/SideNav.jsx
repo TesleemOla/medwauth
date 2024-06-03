@@ -30,7 +30,7 @@ const SideNav = () => {
                 Dispatched Drugs
                 </Navlist>}
             <Navlist path="dashboard/drugs">
-                
+                Drugs
             </Navlist>        
             <Navlist path="dashboard/DrugCategories"> 
            

@@ -50,6 +50,6 @@ export interface ClientData{
                 officeAddress: String,
                     city: String,
                         state: String,
-                            adminId: number|string
+                            adminId: number|string | Object
     
 }
