@@ -12,6 +12,7 @@ export default function DashboardLayout({ children }:any) {
 
     return (
     <Provider>
+        
         <div className="mx-10">
                 <NavBar />
                 <div className="flex flex-row gap-10 justify-left mr-5">

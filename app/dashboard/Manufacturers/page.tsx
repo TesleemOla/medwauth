@@ -11,7 +11,7 @@ const ManufacturerPage = () => {
   const fetcher=(...args)=> fetch(...args,{
     method: 'GET',
     headers: {
-      authorization: `BEarer ${session?.user.token}`
+      authorization: `Bearer ${session?.user.token}`
     }
 
   })
