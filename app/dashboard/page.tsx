@@ -8,6 +8,7 @@ import { Drugdata } from '@/types/typedef'
 import { SummaryCard, Tablehead } from '@/Components'
 import { useData } from '@/utils/data'
 import TableDataRow from '@/Components/TableDataRow'
+import { TableBody, TableContainer } from '@mui/material'
 
 
 
@@ -54,10 +55,10 @@ const DashboardPage = () => {
          
         </div>
         <TableNav item="drugs" btnStyle={`bg-black text-white p-2`} />
-        <table>
+        <TableContainer>
           <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
             heading4="treatmentFor" heading5="packageType" heading6="noInPackage" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} />
-          <tbody>
+          <TableBody>
 
             {
               loadedData.map(({ _id, categoryId, drugName,
@@ -68,8 +69,8 @@ const DashboardPage = () => {
               })
             }
 
-          </tbody>
-        </table>
+          </TableBody>
+        </TableContainer>
       </div>
     )
   } return <div>User not Authorized</div>

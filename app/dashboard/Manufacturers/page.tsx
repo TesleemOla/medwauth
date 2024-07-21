@@ -2,7 +2,7 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data';
-import { TableRow, Tablehead } from '@/Components';
+import { TableDataRow, Tablehead } from '@/Components';
 
 const ManufacturerPage = () => {
 
@@ -35,7 +35,7 @@ const ManufacturerPage = () => {
     
         {
           loadedData.map(({_id,name,phoneNumber,address,status,createdAt, updatedAt})=>{
-            return <TableRow key={_id} data1={name} data2={phoneNumber} data3={address} data4={createdAt.slice(0,10)}
+            return <TableDataRow key={_id} data1={name} data2={phoneNumber} data3={address} data4={createdAt.slice(0,10)}
             data5={updatedAt.slice(0,10)} data6={status} />
           })
         }
