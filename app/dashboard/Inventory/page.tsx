@@ -2,7 +2,8 @@
 import { TableDataRow, Tablehead } from '@/Components'
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import { useData, fetcher } from '@/utils/data'
+import { useData } from '@/utils/data'
+import { TableBody, TableContainer } from '@mui/material'
 
 
 
@@ -32,9 +33,9 @@ const Inventorypage = () => {
     }
   return (
     <div>
-        <table>
+        <TableContainer>
             <Tablehead heading1="Name" heading2="Manufactured Date" heading3="Quantity in Stock" heading4="manufacturer"/>
-         
+         <TableBody>
             {
                   loadedData.map(({ _id, batchNumber, clientId, drugId, drugName, expiryDate,
                      manufacturedDate, manufacturerId, quantityStock, supplierId})=>{
@@ -42,7 +43,8 @@ const Inventorypage = () => {
                         data4={manufacturerId} />
                      })
             }
-        </table>
+            </TableBody>
+        </TableContainer>
     </div>
   )
 }
