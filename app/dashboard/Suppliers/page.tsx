@@ -2,7 +2,8 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data'
-import { TableRow, Tablehead } from '@/Components'
+import { TableDataRow, Tablehead } from '@/Components'
+import { TableBody, TableContainer } from '@mui/material'
 
 const Suppliers = () => {
   const { data: session, status} = useSession()
@@ -26,15 +27,17 @@ const Suppliers = () => {
   }
   return (
     <div>
-      <table>
+      <TableContainer>
         <Tablehead heading1="Name" heading2="Address" heading3="Phone" heading4="userId" />
        
+       <TableBody>
         {
           loadedData.map(({_id, name, address, phoneNumber, userId})=>{
-            return <TableRow key={_id} data1={name} data2={address} data3={phoneNumber} data4={userId.firstName} />
+            return <TableDataRow key={_id} data1={name} data2={address} data3={phoneNumber} data4={userId.firstName} />
           })
         }
-      </table>
+        </TableBody>
+      </TableContainer>
     </div>
   )
 }

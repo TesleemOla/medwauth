@@ -1,5 +1,5 @@
 'use client'
-import { TableRow, Tablehead } from '@/Components'
+import { TableDataRow, Tablehead } from '@/Components'
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData, fetcher } from '@/utils/data'
@@ -38,7 +38,7 @@ const Inventorypage = () => {
             {
                   loadedData.map(({ _id, batchNumber, clientId, drugId, drugName, expiryDate,
                      manufacturedDate, manufacturerId, quantityStock, supplierId})=>{
-                        return <TableRow key={_id} data1={drugName} data2={manufacturedDate.slice(0,10)} data3={quantityStock}
+                        return <TableDataRow key={_id} data1={drugName} data2={manufacturedDate.slice(0,10)} data3={quantityStock}
                         data4={manufacturerId} />
                      })
             }

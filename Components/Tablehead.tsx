@@ -1,4 +1,6 @@
-import React from 'react'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TableCell  from '@mui/material/TableCell'
 
 export interface headingType{
   heading1: String,
@@ -19,24 +21,25 @@ const Tablehead = ({ heading1, heading2, heading3, heading4, heading5,
 
   
   return (
-    <thead>
-      <tr>
-        <th>{heading1}</th>
-        <th>{heading2}</th>
-        <th>{heading3}</th>
-        <th>{heading4}</th>
-        <th>{heading5}</th>
-        <th>{heading6}</th>
-        <th>{heading7}</th>
-        <th>{heading8}</th>
-        <th>{heading9}</th>
-        <th>{heading10}</th>
-      </tr>
-    </thead>
+    <TableHead>
+      <TableRow>
+        <TableCell>{heading1}</TableCell>
+        <TableCell>{heading2}</TableCell>
+        <TableCell>{heading3}</TableCell>
+        <TableCell>{heading4}</TableCell>
+        <TableCell>{heading5}</TableCell>
+        <TableCell>{heading6}</TableCell>
+        <TableCell>{heading7}</TableCell>
+        <TableCell>{heading8}</TableCell>
+        <TableCell>{heading9}</TableCell>
+        <TableCell>{heading10}</TableCell>
+      </TableRow>
+    </TableHead>
   )
 }
 
 
 
 export default Tablehead
+
 

@@ -4,7 +4,7 @@ import Navlist from "./Navlist";
 import SideNav from "./SideNav";
 import SummaryCard from "./SummaryCard";
 import Tablehead from "./Tablehead";
-import TableRow from "./TableDataRow";
+import TableDataRow from "./TableDataRow";
 
 
 
@@ -16,5 +16,5 @@ export {
     SideNav,
     SummaryCard,
     Tablehead,
-    TableRow
+    TableDataRow
 }

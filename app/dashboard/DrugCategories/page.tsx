@@ -2,7 +2,7 @@
 import { useSession} from "next-auth/react";
 import { useEffect, useState } from "react"
 import FetchAllItems from "../_data";
-import { TableRow, Tablehead } from "@/Components";
+import { TableDataRow, Tablehead } from "@/Components";
 import { CategoryData } from "@/types/typedef";
 
 
@@ -30,7 +30,7 @@ const DrugCategories=()=>{
                 <Tablehead heading1="Name" heading2="Description"  />
                 <tbody>
                     {
-                        dataObj?.map(({_id,name, description})=><TableRow data1={name} data2={description} key={_id}/>)
+                        dataObj?.map(({_id,name, description})=><TableDataRow data1={name} data2={description} key={_id}/>)
                     }
                 </tbody>
            </table>

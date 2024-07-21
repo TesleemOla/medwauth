@@ -1,4 +1,6 @@
 import React from "react"
+import TableRow from "@mui/material/TableRow"
+import TableCell from "@mui/material/TableCell"
 
  interface dataType {
     data1: String | number,
@@ -12,13 +14,14 @@ import React from "react"
      data9: String | null,
      data10: number | null
 }
-const TableRow = (props: dataType)=>{
+const TableDataRow = (props: dataType)=>{
     const data = Object.values(props)
     return (
-        <tr>
-          {data.map((item,i)=> <td key={i}>{item}</td>)}        
-        </tr>
+        <TableRow>
+          {data.map((item,i)=> <TableCell key={i}>{item}</TableCell>)}        
+        </TableRow>
     )
 }
 
-export default TableRow
+export default TableDataRow
+

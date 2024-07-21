@@ -2,10 +2,9 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import TableNav from '@/Components/TableNav'
-import TableDataRow from '@/Components/TableDataRow'
 import FetchAllItems from '@/app/dashboard/_data'
 import { Drugdata } from '@/types/typedef'
-import { Tablehead } from '@/Components'
+import { Tablehead, TableDataRow } from '@/Components'
 import { useData } from '@/utils/data'
 
 
