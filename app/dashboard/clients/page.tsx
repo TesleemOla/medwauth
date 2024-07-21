@@ -6,6 +6,7 @@ import { TableRow, Tablehead } from '@/Components'
 import { ClientData } from '@/types/typedef'
 import useSWR from 'swr'
 import { hosturl as url } from '@/utils/host'
+import { TableBody, TableContainer } from '@mui/material'
 
 const Clients = () => {
   
@@ -34,12 +35,10 @@ const Clients = () => {
 
   return (
     <div>
-      <table>
+      <TableContainer>
         <Tablehead heading1="Name" heading2="Email" heading3="Phone" heading4="Address" heading5="Handler" />
         
-       {/* {
-        JSON.stringify(loadedData)
-       } */}
+       <TableBody>
        {
         loadedData?.map(({ _id, customerName, contactEmail, phoneNumber, officeAddress, state, adminId}: ClientData)=>{
           return <TableRow key={_id} data1={customerName} data2={contactEmail} data3={phoneNumber}
@@ -47,7 +46,8 @@ const Clients = () => {
         })
        
        }
-      </table>
+       </TableBody>
+      </TableContainer>
     </div>
   )
 }

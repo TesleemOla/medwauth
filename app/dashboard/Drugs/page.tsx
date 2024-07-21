@@ -2,10 +2,10 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import TableNav from '@/Components/TableNav'
-import FetchAllItems from '@/app/dashboard/_data'
 import { Drugdata } from '@/types/typedef'
 import { Tablehead, TableDataRow } from '@/Components'
 import { useData } from '@/utils/data'
+import { TableBody, TableContainer } from '@mui/material'
 
 
 
@@ -39,10 +39,10 @@ const Drugs = () => {
   return (
     <div>
       <TableNav item="drugs" btnStyle={`bg-black text-white p-2`} />
-      <table>
+      <TableContainer>
         <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
           heading4="treatmentFor" heading5="packageType" heading6="noInPackage" />
-        <tbody>
+        <TableBody>
 
           {
             loadedData.map(({ _id, categoryId, productId, drugName, scientificName,
@@ -53,8 +53,8 @@ const Drugs = () => {
             })
           }
 
-        </tbody>
-      </table>
+        </TableBody>
+      </TableContainer>
     </div>
   )
 
