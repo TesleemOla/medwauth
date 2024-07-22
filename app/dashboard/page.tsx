@@ -16,7 +16,7 @@ const DashboardPage = () => {
 
   const { data: session, status } = useSession()
 
-  const fetcher = (...args) => fetch(...args, {
+  const fetcher = (...args: any[]) => fetch(...args, {
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import FetchAllItems from "../_data";
 import { TableDataRow, Tablehead } from "@/Components";
 import { CategoryData } from "@/types/typedef";
+import { TableBody, TableContainer } from "@mui/material";
 
 
 
@@ -26,14 +27,14 @@ const DrugCategories=()=>{
    
     return(
         <div>
-           <table>
+           <TableContainer>
                 <Tablehead heading1="Name" heading2="Description"  />
-                <tbody>
+                <TableBody>
                     {
                         dataObj?.map(({_id,name, description})=><TableDataRow data1={name} data2={description} key={_id}/>)
                     }
-                </tbody>
-           </table>
+                </TableBody>
+           </TableContainer>
         </div>
     )
 }

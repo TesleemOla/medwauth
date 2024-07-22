@@ -18,7 +18,8 @@ const TableDataRow = (props: dataType)=>{
     const data = Object.values(props)
     return (
         <TableRow>
-          {data.map((item,i)=> <TableCell key={i}>{item}</TableCell>)}        
+          {data.map((item,i)=> <TableCell key={i}>{item}</TableCell>)}  
+          <TableCell></TableCell>      
         </TableRow>
     )
 }
