@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react'
 import { TableDataRow, Tablehead } from '@/Components'
 import useSWR from 'swr'
 import { hosturl } from '@/utils/host'
+import { TableBody, TableContainer } from '@mui/material'
 
 
 const Dispatched = () => {
@@ -34,19 +35,19 @@ const Dispatched = () => {
 
   return (
     <div>
-      <table>
+      <TableContainer>
         <Tablehead heading1="Client" heading2="Inventory" heading3="Quantity" heading4="Date Created"
           heading5="Date Updated" />
 
-        <tbody>
+        <TableBody>
           {
             loadedData.map(({ _id, inventory, quantity, client, createdAt, updatedAt }) => {
               return <TableDataRow key={_id}
                 data1={client} data2={inventory._id} data3={quantity} data4={createdAt.slice(0, 10)} data5={updatedAt.slice(0, 10)} />
             })
           }
-        </tbody>
-      </table>
+        </TableBody>
+      </TableContainer>
     </div>
   )
 }

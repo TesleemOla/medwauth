@@ -32,7 +32,7 @@ const Inventorypage = () => {
         return <h1>...Loading</h1>
     }
   return (
-    <div>
+    
         <TableContainer>
             <Tablehead heading1="Name" heading2="Manufactured Date" heading3="Quantity in Stock" heading4="manufacturer"/>
          <TableBody>
@@ -45,7 +45,7 @@ const Inventorypage = () => {
             }
             </TableBody>
         </TableContainer>
-    </div>
+   
   )
 }
 

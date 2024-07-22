@@ -1,17 +1,36 @@
 import React from 'react'
+import { useFormStatus, useFormState } from 'react-dom'
 
 const CreateClient = () => {
+
+  const {pending } = useFormStatus()
+
+  console.log(pending)
   return (
     <div>
       <form className="mb-6" action="/" method="post">
         <div className="flex flex-col mb-4">
-          <label className="mb-2 uppercase font-bold text-lg text-gray-700" htmlFor="medicine_name">Medicine Name</label>
+          <label className="mb-2 uppercase font-bold text-lg text-gray-700" htmlFor="medicine_name">Customer Name</label>
           <input className="border py-2 px-3 text-gray-900" type="text" name="medicine_name" id="medicine_name" required />
         </div>
-        {/* Add more input fields for other details (e.g., dosage, side effects, etc.) */}
+        
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold" htmlFor="medicine_name">Medicine Name</label>
-          <input className="border py-2 px-3 w-full" type="text" name="medicine_name" id="medicine_name" required />
+          <label className="block text-gray-700 font-bold" htmlFor="email">Email</label>
+          <input className="border py-2 px-3 w-full" type="text" name="email" id="medicine_name" required />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold" htmlFor="office">Office Address</label>
+          <input className="border py-2 px-3 w-full" type="text" name="office" id="medicine_name" required />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold" htmlFor="state">State</label>
+          <input className="border py-2 px-3 w-full" type="text" name="state" id="medicine_name" required />
+        </div>
+        <div>
+          <label htmlFor="admin">Select Admin</label>
+          <select id="admin">
+            <option value=""></option>
+          </select>
         </div>
         <button className="block bg-purple-700 hover:bg-purple-800 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
       </form>
@@ -20,7 +39,7 @@ const CreateClient = () => {
 }
 
 export default CreateClient
-
+// customerName, contactEmail, phoneNumber, officeAddress, state, adminId
 //   < !--
 //   This example requires some changes to your config:
 

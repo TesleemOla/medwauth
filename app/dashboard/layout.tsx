@@ -6,6 +6,7 @@ import { Provider } from "../Provider";
 
 
 
+
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
 
@@ -17,9 +18,9 @@ export default function DashboardLayout({ children }:any) {
                 <NavBar />
                 <div className="flex flex-row gap-10 justify-left mr-5">
                 <SideNav />
-                <>
+                
                 {children}
-                </>
+                
                 </div>
                 
         </div>

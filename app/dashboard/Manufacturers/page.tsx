@@ -8,7 +8,7 @@ import { TableBody, TableContainer } from '@mui/material';
 const ManufacturerPage = () => {
 
   const { data:session, status} = useSession();
-
+  
   const fetcher=(...args)=> fetch(...args,{
     method: 'GET',
     headers: {
@@ -29,21 +29,21 @@ const ManufacturerPage = () => {
   }
 
   return (
-    <div>
+    
       <TableContainer>
         <Tablehead heading1="Name" heading2='phone' heading3="Address" heading4="Date Created"
-        heading5="Date Modified" heading6="Status" /> 
+      heading5="Date Modified" heading6="Status" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} /> 
     
       <TableBody>
         {
           loadedData.map(({_id,name,phoneNumber,address,status,createdAt, updatedAt})=>{
-            return <TableDataRow key={_id} data1={name} data2={phoneNumber} data3={address} data4={createdAt.slice(0,10)}
-            data5={updatedAt.slice(0,10)} data6={status} />
+            return <TableDataRow key={_id} data1={name} data2={phoneNumber} data3={address} data4={createdAt.slice(0, 10)}
+            data5={updatedAt.slice(0, 10)} data6={status} data7={null} data8={null} data9={null} data10={null} />
           })
         }
       </TableBody>
       </TableContainer>
-    </div>
+    
   )
 }
 
