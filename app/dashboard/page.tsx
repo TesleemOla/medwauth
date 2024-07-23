@@ -1,11 +1,11 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+
 import { useSession } from 'next-auth/react'
 import TableNav from '@/Components/TableNav'
 import TableRow from '@/Components/TableDataRow'
 import FetchAllItems from '@/app/dashboard/_data'
 import { Drugdata } from '@/types/typedef'
-import { SummaryCard, Tablehead } from '@/Components'
+import { Loading, SummaryCard, Tablehead } from '@/Components'
 import { useData } from '@/utils/data'
 import TableDataRow from '@/Components/TableDataRow'
 import { TableBody, TableContainer } from '@mui/material'
@@ -73,7 +73,7 @@ const DashboardPage = () => {
         </TableContainer>
       </div>
     )
-  } return <div>User not Authorized</div>
+  } return <Loading />
 
 }
 

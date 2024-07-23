@@ -3,7 +3,7 @@ import { useFormState, useFormStatus } from 'react-dom'
 
 const CreateCategory = () => {
     const { pending } = useFormStatus()
-
+ 
     // const [useFormState()
 
     function creator(formData: { get: (arg0: string) => any }){

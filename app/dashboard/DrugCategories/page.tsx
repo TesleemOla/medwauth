@@ -1,37 +1,40 @@
 "use client"
 import { useSession} from "next-auth/react";
-import { useEffect, useState } from "react"
-import FetchAllItems from "../_data";
+
 import { TableDataRow, Tablehead } from "@/Components";
 import { CategoryData } from "@/types/typedef";
 import { TableBody, TableContainer } from "@mui/material";
-
+import { useData } from "@/utils/data";
+import { hosturl } from "@/utils/host";
 
 
 const DrugCategories=()=>{
 
     const {data:session, status} = useSession()
-    const [ dataObj, setDataObj] = useState<CategoryData[]>()
-   
-    useEffect(()=>{
-        async function getData(){
-            if(session){
-                return await FetchAllItems(session?.user.token, "drugCategory")
-            }
+    const fetcher=(...args)=> fetch(...args,{
+        method: "GET",
+        headers:{
+            authorization: `Bearer ${session?.user?.token}`
         }
-        getData()
-        .then(res=> setDataObj(res))
-        
+    })
+    .then(res=> res.json())
 
-    }, [session, dataObj])
-   
+    const { dataObj: categoryData, isLoading, isError} = useData(`drugCategory`,fetcher)
+    
+    const loadedData=[]
+   if(!isLoading && !isError) {
+    for(const key in categoryData){
+        loadedData.push(categoryData[key])
+    }
+   }
+
     return(
         <div>
            <TableContainer>
                 <Tablehead heading1="Name" heading2="Description"  />
                 <TableBody>
                     {
-                        dataObj?.map(({_id,name, description})=><TableDataRow data1={name} data2={description} key={_id}/>)
+                        categoryData?.map(({_id,name, description}: CategoryData)=><TableDataRow data1={name} data2={description} key={_id}/>)
                     }
                 </TableBody>
            </TableContainer>

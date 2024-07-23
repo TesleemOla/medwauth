@@ -3,7 +3,7 @@ import React from 'react'
 import { useSession } from 'next-auth/react'
 import TableNav from '@/Components/TableNav'
 import { Drugdata } from '@/types/typedef'
-import { Tablehead, TableDataRow } from '@/Components'
+import { Tablehead, TableDataRow, Loading } from '@/Components'
 import { useData } from '@/utils/data'
 import { TableBody, TableContainer } from '@mui/material'
 
@@ -12,7 +12,7 @@ import { TableBody, TableContainer } from '@mui/material'
 const Drugs = () => {
 
   const { data: session, status } = useSession()
-  const fetcher = (...args) => fetch(...args, {
+  const fetcher = (...args: any[]) => fetch(...args, {
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`
@@ -30,7 +30,7 @@ const Drugs = () => {
   }
 
   if (isLoading) {
-    return <h1>...Loading</h1>
+    return <Loading />
   }
 
 
@@ -41,7 +41,7 @@ const Drugs = () => {
       <TableNav item="drugs" btnStyle={`bg-black text-white p-2`} />
       <TableContainer>
         <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
-          heading4="treatmentFor" heading5="packageType" heading6="noInPackage" />
+        heading4="treatmentFor" heading5="packageType" heading6="noInPackage" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} />
         <TableBody>
 
           {
@@ -49,7 +49,7 @@ const Drugs = () => {
               reorderLevel, drugDescription, treatmentUsedFor, packageType, noInPackage
             }) => {
               return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription}
-                data4={treatmentUsedFor} data5={packageType} data6={noInPackage} />
+              data4={treatmentUsedFor} data5={packageType} data6={noInPackage} data7={null} data8={null} data9={null} data10={null} />
             })
           }
 
