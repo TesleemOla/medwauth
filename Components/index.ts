@@ -5,7 +5,7 @@ import SideNav from "./SideNav";
 import SummaryCard from "./SummaryCard";
 import Tablehead from "./Tablehead";
 import TableDataRow from "./TableDataRow";
-
+import Loading from "./Loading";
 
 
 
@@ -16,5 +16,6 @@ export {
     SideNav,
     SummaryCard,
     Tablehead,
-    TableDataRow
+    TableDataRow,
+    Loading
 }

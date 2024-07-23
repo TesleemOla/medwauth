@@ -1,5 +1,5 @@
 "use client"
-import NavBar from "@/Components/NavBar";
+import Navbar from "@/Components/NavBar";
 import SideNav from "@/Components/SideNav";
 import SummaryCard from "@/Components/SummaryCard";
 import { Provider } from "../Provider";
@@ -15,7 +15,7 @@ export default function DashboardLayout({ children }:any) {
     <Provider>
         
         <div className="mx-10">
-                <NavBar />
+                <Navbar />
                 <div className="flex flex-row gap-10 justify-left mr-5">
                 <SideNav />
                 

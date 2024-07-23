@@ -2,7 +2,7 @@
 import React from 'react'
 import { useSession } from "next-auth/react"
 
-import { TableRow, Tablehead } from '@/Components'
+import { TableDataRow, Tablehead } from '@/Components'
 import { ClientData } from '@/types/typedef'
 import useSWR from 'swr'
 import { hosturl as url } from '@/utils/host'
@@ -41,7 +41,7 @@ const Clients = () => {
        <TableBody>
        {
         loadedData?.map(({ _id, customerName, contactEmail, phoneNumber, officeAddress, state, adminId}: ClientData)=>{
-          return <TableRow key={_id} data1={customerName} data2={contactEmail} data3={phoneNumber}
+          return <TableDataRow key={_id} data1={customerName} data2={contactEmail} data3={phoneNumber}
           data4={state} data5={0}  />
         })
        
