@@ -13,9 +13,9 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-full">
                     {/* <Logo /> Your logo component */}
                     <ul className="hidden md:flex gap-x-6">
-                        <li>
-                            <Link href="/about">
-                                <p>About Us</p>
+                        <li className="text-xl font-bold text-blue-500">
+                            <Link href="/">
+                                PharmaCol
                             </Link>
                         </li>
                         <li>

@@ -1,4 +1,5 @@
 "use client"
+import { hosturl } from "@/utils/host";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -15,9 +16,9 @@ export default function Home() {
     <Link href="dashboard">
       Dashboard 
     </Link>
-      <button onClick={() => signOut()} >Log Out</button>
-      <button onClick={() => signIn()} >Log In</button>
-     
+      <button onClick={() => signOut()} className="text-black border-white">Log Out</button>:
+      <button onClick={() => signIn('email', { email, callbackUrl: `${hosturl}/dashboard` })
+      } className="text-black border-white">Log In</button>
     </div>
     
   );

@@ -3,6 +3,7 @@ import Navbar from "@/Components/NavBar";
 import SideNav from "@/Components/SideNav";
 import SummaryCard from "@/Components/SummaryCard";
 import { Provider } from "../Provider";
+import { Fragment } from "react";
 
 
 
@@ -16,12 +17,12 @@ export default function DashboardLayout({ children }:any) {
         
         <div className="mx-10">
                 <Navbar />
-                <div className="flex flex-row gap-10 justify-left mr-5">
+                <Fragment className="flex flex-row gap-10 justify-left mr-5">
                 <SideNav />
                 
                 {children}
                 
-                </div>
+                </Fragment>
                 
         </div>
      </Provider>

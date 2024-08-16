@@ -1,6 +1,7 @@
 export interface tableNav{
     item: String,
-    btnStyle: string
+    btnStyle: string,
+    createLink: string | URL
 }
 
 export interface fetchAllData {

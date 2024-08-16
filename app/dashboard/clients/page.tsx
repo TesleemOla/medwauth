@@ -2,11 +2,12 @@
 import React from 'react'
 import { useSession } from "next-auth/react"
 
-import { TableDataRow, Tablehead } from '@/Components'
+import { Loading, TableDataRow, Tablehead } from '@/Components'
 import { ClientData } from '@/types/typedef'
 import useSWR from 'swr'
 import { hosturl as url } from '@/utils/host'
 import { TableBody, TableContainer } from '@mui/material'
+import TableNav from '@/Components/TableNav'
 
 const Clients = () => {
   
@@ -30,11 +31,12 @@ const Clients = () => {
   }
   
   if(!dataObj){
-    return <h1>No data to display</h1>
+    return <Loading />
   }
 
   return (
     <div>
+      <TableNav createLink="CreateClient" btnStyle="bg-blue-500 text-white px-4 w-fit" item="clients" />
       <TableContainer>
         <Tablehead heading1="Name" heading2="Email" heading3="Phone" heading4="Address" heading5="Handler" />
         
