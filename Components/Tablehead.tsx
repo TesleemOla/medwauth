@@ -1,6 +1,7 @@
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import TableCell  from '@mui/material/TableCell'
+import TableCell, { tableCellClasses }  from '@mui/material/TableCell'
+import { styled } from "@mui/material/styles"
 
 export interface headingType{
   heading1: String,
@@ -19,20 +20,28 @@ const Tablehead = ({ heading1, heading2, heading3, heading4, heading5,
   heading6, heading7, heading8, heading9, heading10
 }: headingType) => {
 
-  
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell>{heading1}</TableCell>
-        <TableCell>{heading2}</TableCell>
-        <TableCell>{heading3}</TableCell>
-        <TableCell>{heading4}</TableCell>
-        <TableCell>{heading5}</TableCell>
-        <TableCell>{heading6}</TableCell>
-        <TableCell>{heading7}</TableCell>
-        <TableCell>{heading8}</TableCell>
-        <TableCell>{heading9}</TableCell>
-        <TableCell>{heading10}</TableCell>
+    <TableHead >
+      <TableRow >
+        <StyledTableCell>{heading1}</StyledTableCell>
+        <StyledTableCell>{heading2}</StyledTableCell>
+        <StyledTableCell>{heading3}</StyledTableCell>
+        <StyledTableCell>{heading4}</StyledTableCell>
+        <StyledTableCell>{heading5}</StyledTableCell>
+        <StyledTableCell>{heading6}</StyledTableCell>
+        <StyledTableCell>{heading7}</StyledTableCell>
+        <StyledTableCell>{heading8}</StyledTableCell>
+        <StyledTableCell>{heading9}</StyledTableCell>
+        <StyledTableCell>{heading10}</StyledTableCell>
       </TableRow>
     </TableHead>
   )

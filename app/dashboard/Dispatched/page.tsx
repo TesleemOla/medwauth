@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import { TableDataRow, Tablehead } from '@/Components'
+import { TableDataRow, Tablehead, TableNav } from '@/Components'
 import useSWR from 'swr'
 import { hosturl } from '@/utils/host'
 import { TableBody, TableContainer } from '@mui/material'
@@ -35,6 +35,7 @@ const Dispatched = () => {
 
   return (
     <div>
+      <TableNav createLink="#" item="Dispatched" />
       <TableContainer>
         <Tablehead heading1="Client" heading2="Inventory" heading3="Quantity" heading4="Date Created"
           heading5="Date Updated" />

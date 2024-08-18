@@ -6,6 +6,7 @@ import { hosturl } from "@/utils/host"
 
 
 
+
 const handler = NextAuth({
     providers:[
         CredentialsProvider({
@@ -49,7 +50,9 @@ const handler = NextAuth({
             session.user = token;
             return session
         },
-        // async redirect()
+        async redirect({url, baseUrl}){
+
+        }
     },
     secret: process.env.AUTH_SECRET
 })

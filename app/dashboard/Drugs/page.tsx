@@ -29,31 +29,34 @@ const Drugs = () => {
     loadedData.push(dataObj[key])
   }
 
-  if (isLoading) {
-    return <Loading />
-  }
 
 
   // if(session){
   // Render your dashboard content here
   return (
     <div>
-      <TableNav item="drugs" btnStyle={`bg-black text-white p-2`} />
+      <TableNav item="drugs" createLink={`/api/drug`} />
       <TableContainer>
-        <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
-        heading4="treatmentFor" heading5="packageType" heading6="noInPackage" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} />
+        <Tablehead heading1="drugName" heading2="categoryId" heading3="Description" heading4={undefined}
+          heading5="treatmentFor" heading6="packageType" heading7="noInPackage" heading8={undefined} heading9={undefined} heading10={undefined} />
+
+    {
+      isLoading? 
+      <Loading/>:  (
         <TableBody>
 
           {
             loadedData.map(({ _id, categoryId, productId, drugName, scientificName,
-              reorderLevel, drugDescription, treatmentUsedFor, packageType, noInPackage
+              drugDescription, reorderLevel, treatmentUsedFor, packageType, noInPackage
             }) => {
-              return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription}
-              data4={treatmentUsedFor} data5={packageType} data6={noInPackage} data7={null} data8={null} data9={null} data10={null} />
+              return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription} data4={reorderLevel}
+              data5={treatmentUsedFor} data6={packageType} data7={noInPackage}  data8={null} data9={null} data10={null} />
             })
           }
-
         </TableBody>
+        
+       )}
+        
       </TableContainer>
     </div>
   )

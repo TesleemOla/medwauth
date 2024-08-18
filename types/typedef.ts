@@ -1,6 +1,5 @@
 export interface tableNav{
     item: String,
-    btnStyle: string,
     createLink: string | URL
 }
 
