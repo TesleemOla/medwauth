@@ -5,7 +5,10 @@ import SideNav from "./SideNav";
 import SummaryCard from "./SummaryCard";
 import Tablehead from "./Tablehead";
 import TableDataRow from "./TableDataRow";
+import OptionBtn from "./OptionBtn";
+import TableNav from "./TableNav";
 import Loading from "./Loading";
+import Overlay from "./Overlay";
 
 
 
@@ -17,5 +20,8 @@ export {
     SummaryCard,
     Tablehead,
     TableDataRow,
-    Loading
+    Loading,
+    OptionBtn,
+    TableNav,
+    Overlay
 }

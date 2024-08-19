@@ -2,7 +2,8 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { hosturl } from "@/utils/host"
-import { getCookie, setCookie } from "cookies-next"
+
+
 
 
 
@@ -49,6 +50,9 @@ const handler = NextAuth({
             session.user = token;
             return session
         }
+    },
+    pages:{
+        signIn: "/login"
     },
     secret: process.env.AUTH_SECRET
 })

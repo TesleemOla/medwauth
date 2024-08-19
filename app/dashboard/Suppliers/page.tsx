@@ -2,7 +2,7 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data'
-import { TableDataRow, Tablehead } from '@/Components'
+import { TableDataRow, Tablehead, TableNav } from '@/Components'
 import { TableBody, TableContainer } from '@mui/material'
 
 const Suppliers = () => {
@@ -27,6 +27,7 @@ const Suppliers = () => {
   }
   return (
     <div>
+      <TableNav item="Suppliers" createLink={`/api/supplier/new`} />
       <TableContainer>
         <Tablehead heading1="Name" heading2="Address" heading3="Phone" heading4="userId" />
        

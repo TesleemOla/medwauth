@@ -1,6 +1,6 @@
 export interface tableNav{
     item: String,
-    btnStyle: string
+    createLink: string | URL
 }
 
 export interface fetchAllData {
@@ -52,4 +52,8 @@ export interface ClientData{
                         state: String,
                             adminId: number|string | Object
     
+}
+
+export interface apiData{
+    message: string
 }

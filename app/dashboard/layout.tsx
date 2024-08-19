@@ -1,8 +1,9 @@
 "use client"
 import Navbar from "@/Components/NavBar";
 import SideNav from "@/Components/SideNav";
-import SummaryCard from "@/Components/SummaryCard";
+import {SummaryCard} from "@/Components";
 import { Provider } from "../Provider";
+
 
 
 
@@ -13,15 +14,17 @@ export default function DashboardLayout({ children }:any) {
 
     return (
     <Provider>
-        
+        {/* <div className="flex lg:flex-row">
+            <SummaryCard Headdet="Home" data="Dashboard" icon="H"/>
+        </div> */}
         <div className="mx-10">
                 <Navbar />
-                <div className="flex flex-row gap-10 justify-left mr-5">
+                <section className="flex flex-row gap-10 justify-left mr-5 sm:mr-0 mt-20">
                 <SideNav />
                 
                 {children}
                 
-                </div>
+                </section>
                 
         </div>
      </Provider>
