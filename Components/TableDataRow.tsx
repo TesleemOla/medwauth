@@ -7,12 +7,12 @@ import TableCell from "@mui/material/TableCell"
     data2: String | number,
     data3: String | number,
     data4: String | number,
-    data5: String | number | null,
-    data6: String | number | null,
-     data7: String | null,
-     data8: String | null,
-     data9: String | null,
-     data10: number | null
+    data5?: String | number | null,
+    data6?: String | number | null,
+     data7?: String | null,
+     data8?: String | null,
+     data9?: String | null,
+     data10?: number | null
 }
 const TableDataRow = (props: dataType)=>{
     const data = Object.values(props)

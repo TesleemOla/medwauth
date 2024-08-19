@@ -8,12 +8,12 @@ export interface headingType{
   heading2: String,
   heading3: String,
   heading4: String,
-  heading5: String,
-  heading6: String, 
-  heading7: String | undefined,
-  heading8: String | undefined,
-  heading9: String | undefined,
-  heading10: String | undefined,
+  heading5?: String,
+  heading6?: String, 
+  heading7?: String | undefined,
+  heading8?: String | undefined,
+  heading9?: String | undefined,
+  heading10?: String | undefined,
 
 }
 const Tablehead = ({ heading1, heading2, heading3, heading4, heading5, 

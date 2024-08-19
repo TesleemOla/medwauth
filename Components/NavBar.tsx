@@ -5,14 +5,15 @@ import Link from "next/link";
 
 
 
+
 const Navbar = () => {
   
     return (
-        <div className="w-full h-20 border-black-1 sticky top-0">
+        <div className="w-full h-20 bg-white fixed top-0">
             <div className="container mx-auto px-4 h-full">
                 <div className="flex justify-between items-center h-full">
-                    {/* <Logo /> Your logo component */}
-                    <ul className="hidden md:flex gap-x-6">
+                    
+                    <ul className="flex gap-x-6">
                         <li className="text-xl font-bold text-blue-500">
                             <Link href="/">
                                 PharmaCol

@@ -12,7 +12,7 @@ import { TableBody, TableContainer } from '@mui/material'
 const Drugs = () => {
 
   const { data: session, status } = useSession()
-  const fetcher = (...args: any[]) => fetch(...args, {
+  const fetcher = (str: string) => fetch(str, {
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`
@@ -37,8 +37,9 @@ const Drugs = () => {
     <div>
       <TableNav item="drugs" createLink={`/api/drug`} />
       <TableContainer>
-        <Tablehead heading1="drugName" heading2="categoryId" heading3="Description" heading4={undefined}
-          heading5="treatmentFor" heading6="packageType" heading7="noInPackage" heading8={undefined} heading9={undefined} heading10={undefined} />
+        <Tablehead heading1="drugName" heading2="categoryId" heading3="Description" heading4="ReOrder Level"
+        heading5="treatmentFor" heading6="package Type" heading7="noInPackage" 
+         />
 
     {
       isLoading? 
@@ -46,11 +47,11 @@ const Drugs = () => {
         <TableBody>
 
           {
-            loadedData.map(({ _id, categoryId, productId, drugName, scientificName,
+            loadedData.map(({ _id, categoryId, drugName,
               drugDescription, reorderLevel, treatmentUsedFor, packageType, noInPackage
             }) => {
               return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription} data4={reorderLevel}
-              data5={treatmentUsedFor} data6={packageType} data7={noInPackage}  data8={null} data9={null} data10={null} />
+              data5={treatmentUsedFor} data6={packageType} data7={noInPackage}  />
             })
           }
         </TableBody>

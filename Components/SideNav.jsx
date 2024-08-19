@@ -3,6 +3,7 @@ import React from 'react'
 import Navlist from './Navlist'
 import { usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import Hamburger from './Hamburger'
 
 
 const SideNav = () => {
@@ -13,10 +14,8 @@ const SideNav = () => {
 
   return (
     <aside className='w-full md:max-w-72 shadow-2xl h-4/5'>
-      <div className="md:hidden">
-       
-      </div>
-        <ul>
+       <Hamburger/>
+        <ul className="hidden md:flex flex-col">
           <Navlist path="dashboard">
             
                 Dashboard

@@ -25,6 +25,7 @@ export default function Home() {
       >
         Log In
       </button>
+      
     </div>
 
     

@@ -53,3 +53,7 @@ export interface ClientData{
                             adminId: number|string | Object
     
 }
+
+export interface apiData{
+    message: string
+}

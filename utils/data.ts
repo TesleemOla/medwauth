@@ -1,9 +1,9 @@
 import useSWR from "swr"
 import { hosturl as url } from "./host"
-import { fetchAllData } from "@/types/typedef"
 
-export const FetchAllItems = async (token: string, item:string) =>{
-    const data = await fetch(`${url}/api/${item}`,{
+
+export const FetchAllItems = async (token: string, url:string) =>{
+    const data = await fetch(url,{
         method: "GET",
         headers: {
             Authorization: token
@@ -14,7 +14,7 @@ export const FetchAllItems = async (token: string, item:string) =>{
 }
 
 // const FetchSingleCustomer = async()
-export const fetcher = (...args) => fetch(...args, {
+export const fetcher = (str: string, token: string) => fetch(str, {
     method: "GET",
     headers: {
         authorization: `Bearer ${token}`

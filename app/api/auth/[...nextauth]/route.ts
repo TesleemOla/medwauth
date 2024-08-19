@@ -49,10 +49,10 @@ const handler = NextAuth({
         async session({ session, user, token}){
             session.user = token;
             return session
-        },
-        async redirect({url, baseUrl}){
-
         }
+    },
+    pages:{
+        signIn: "/login"
     },
     secret: process.env.AUTH_SECRET
 })
