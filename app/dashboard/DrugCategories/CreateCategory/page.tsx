@@ -1,35 +1,53 @@
+"use client"
+import { FormWrapper } from '@/Components'
+import { hosturl } from '@/utils/host'
+import { useSession } from 'next-auth/react'
 import React from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 
 const CreateCategory = () => {
     const { pending } = useFormStatus()
- 
-    // const [useFormState()
+      const {data: session, status} = useSession() 
+      const token = session?.user?.token
 
-    function creator(formData: { get: (arg0: string) => any }){
-        const category = formData.get('category')
-        const description = formData.get('description')
+    function creator(formData: any){
+      const name = formData.get('name')
+      const description = formData.get('description')
+      const bodyObj = {
+        name,
+        description
+      }
+      console.log(name, description)
+      fetch(`${hosturl}/api/drugCategory`,{
+        method: "POST",
+        body: {...bodyObj},
 
-        console.log(category, description)
-    }
+        headers:{
+          authorization: `Bearer ${token}`
+        }
+      })
+        .then(res=> res)
+      
+    } 
 
   return (
-    <div>
-          <form action={creator}>
+    <FormWrapper>
+          <form action={creator}
+        className="flex flex-col align-middle justify-center">
             <div>
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" id="category" placeholder="Category Name"/>
+                <label htmlFor="category">Category Name</label>
+                <input type="text" name="name" id="category" placeholder="Category Name"/>
             </div>        
               <div>
                   <label htmlFor="description">Description</label>
                   <input type="text" name="description" id="description" placeholder="Description" />
               </div>
-              <button aria-disabled={pending} type="submit">
+              <button aria-disabled={pending} type="submit" className="bg-blue-900 text-white p-2">
                 { pending? "Creating...": "Create" }
               </button>
           </form>
     
-    </div>
+    </FormWrapper>
   )
 }
 

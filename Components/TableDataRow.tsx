@@ -1,6 +1,9 @@
-import React from "react"
+"use client"
+import React, { useState} from "react"
 import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
+import { BsThreeDotsVertical } from "react-icons/bs";
+import PopUp from "./PopUp";
 
  interface dataType {
     data1: String | number,
@@ -14,12 +17,22 @@ import TableCell from "@mui/material/TableCell"
      data9?: String | null,
      data10?: number | null
 }
+
+
+
 const TableDataRow = (props: dataType)=>{
+  const [isOpen, setIsOpen] = useState<boolean>()
+  const handleMouse = () => {
+    setIsOpen(!isOpen)
+  }
+
     const data = Object.values(props)
     return (
-        <TableRow>
+        <TableRow onMouseEnter={handleMouse}
+        onMouseLeave={handleMouse}>
           {data.map((item,i)=> <TableCell key={i}>{item}</TableCell>)}  
-          <TableCell></TableCell>      
+          <TableCell> <BsThreeDotsVertical /></TableCell>
+          {isOpen && <PopUp />}
         </TableRow>
     )
 }

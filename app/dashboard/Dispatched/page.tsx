@@ -5,6 +5,8 @@ import { TableDataRow, Tablehead, TableNav } from '@/Components'
 import useSWR from 'swr'
 import { hosturl } from '@/utils/host'
 import { TableBody, TableContainer } from '@mui/material'
+import { useData } from '@/utils/data'
+
 
 
 const Dispatched = () => {
@@ -12,8 +14,8 @@ const Dispatched = () => {
   const { data: session, status } = useSession()
   const token = session?.user.token
 
-  const fetcher = (...args) => {
-    return fetch(...args, {
+  const fetcher = async (str: string) => {
+    return fetch(str, {
       method: "GET",
       headers: {
         authorization: `Bearer ${token}`
@@ -22,14 +24,15 @@ const Dispatched = () => {
       .then(res => res.json())
   }
   const { data: dataObj, error, isLoading } = useSWR(`${hosturl}/api/dispatched`, fetcher)
-
+  
+  
   const loadedData = []
   if (!error && !isLoading) {
     for (const key in dataObj?.data) {
       loadedData.push(dataObj.data[key])
     }
   }
-
+//  
 
 
 
@@ -42,9 +45,11 @@ const Dispatched = () => {
 
         <TableBody>
           {
-            loadedData.map(({ _id, inventory, quantity, client, createdAt, updatedAt }) => {
+            loadedData.map(({ _id, inventory, quantity, customer, createdAt, updatedAt }) => {
+              
               return <TableDataRow key={_id}
-                data1={client} data2={inventory._id} data3={quantity} data4={createdAt.slice(0, 10)} data5={updatedAt.slice(0, 10)} />
+                data1={customer.customerName}
+                data2={inventory.drugName} data3={quantity} data4={createdAt.slice(0, 10)} data5={updatedAt.slice(0, 10)} />
             })
           }
         </TableBody>

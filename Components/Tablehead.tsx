@@ -6,8 +6,8 @@ import { styled } from "@mui/material/styles"
 export interface headingType{
   heading1: String,
   heading2: String,
-  heading3: String,
-  heading4: String,
+  heading3?: String,
+  heading4?: String,
   heading5?: String,
   heading6?: String, 
   heading7?: String | undefined,

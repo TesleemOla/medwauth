@@ -9,6 +9,8 @@ import OptionBtn from "./OptionBtn";
 import TableNav from "./TableNav";
 import Loading from "./Loading";
 import Overlay from "./Overlay";
+import PopUp from "./PopUp";
+import FormWrapper from "./FormWrapper";
 
 
 
@@ -23,5 +25,7 @@ export {
     Loading,
     OptionBtn,
     TableNav,
-    Overlay
+    Overlay,
+    PopUp,
+    FormWrapper
 }
