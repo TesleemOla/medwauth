@@ -30,9 +30,9 @@ const DrugCategories=()=>{
 
     return(
         <div>
-            <TableNav item="Categories" createLink={`/api/drugCategory`} />
+            <TableNav item="Categories" createLink="DrugCategories/CreateCategory" />
            <TableContainer>
-                <Tablehead heading1="Name" heading2="Description" heading3={undefined} heading4={undefined} heading5={undefined} heading6={undefined} heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined}  />
+                <Tablehead heading1="Name" heading2="Description" />
                 <TableBody>
                     {
                         categoryData?.map(({_id,name, description}: CategoryData)=><TableDataRow data1={name} data2={description} key={_id}/>)

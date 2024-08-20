@@ -1,9 +1,7 @@
 "use client"
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import TableNav from '@/Components/TableNav'
-import { Drugdata } from '@/types/typedef'
-import { Tablehead, TableDataRow, Loading } from '@/Components'
+import { Tablehead, TableDataRow, Loading, TableNav } from '@/Components'
 import { useData } from '@/utils/data'
 import { TableBody, TableContainer } from '@mui/material'
 
@@ -51,7 +49,7 @@ const Drugs = () => {
               drugDescription, reorderLevel, treatmentUsedFor, packageType, noInPackage
             }) => {
               return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription} data4={reorderLevel}
-              data5={treatmentUsedFor} data6={packageType} data7={noInPackage}  />
+              data5={treatmentUsedFor} data6={packageType} data7={noInPackage} />
             })
           }
         </TableBody>

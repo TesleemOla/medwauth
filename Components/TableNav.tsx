@@ -14,7 +14,7 @@ const TableNav = ({item, createLink}: tableNav) => {
           
         
           <button className='bg-black text-white text-xl md:text-sm p-2 w-fit'> Search {item}</button>
-          <Link href={`${hosturl}${createLink}`}><button className='bg-black text-white p-2 w-fit'>Create {item}</button></Link>
+          <Link href={createLink}><button className='bg-black text-white p-2 w-fit'>Create {item}</button></Link>
         </div>
 
 
