@@ -38,7 +38,7 @@ const Dispatched = () => {
 
   return (
     <div>
-      <TableNav createLink="#" item="Dispatched" />
+      <TableNav createLink="Dispatched/CreateDispatched" item="Dispatched" />
       <TableContainer>
         <Tablehead heading1="Client" heading2="Inventory" heading3="Quantity" heading4="Date Created"
           heading5="Date Updated" />

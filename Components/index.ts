@@ -11,6 +11,8 @@ import Loading from "./Loading";
 import Overlay from "./Overlay";
 import PopUp from "./PopUp";
 import FormWrapper from "./FormWrapper";
+import InputContainer from "./InputContainer";
+
 
 
 
@@ -27,5 +29,7 @@ export {
     TableNav,
     Overlay,
     PopUp,
-    FormWrapper
+    FormWrapper,
+    InputContainer,
+
 }

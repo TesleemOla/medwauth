@@ -20,7 +20,7 @@ const CreateCategory = () => {
       console.log(name, description)
       fetch(`${hosturl}/api/drugCategory`,{
         method: "POST",
-        body: {...bodyObj},
+        body: JSON.stringify(bodyObj),
 
         headers:{
           authorization: `Bearer ${token}`
