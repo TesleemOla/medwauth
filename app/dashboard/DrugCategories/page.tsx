@@ -11,7 +11,8 @@ import { useData } from "@/utils/data";
 const DrugCategories=()=>{
 
     const {data:session, status} = useSession()
-    const fetcher=(...args)=> fetch(...args,{
+
+    const fetcher=(str)=> fetch(str,{
         method: "GET",
         headers:{
             authorization: `Bearer ${session?.user?.token}`
@@ -35,7 +36,7 @@ const DrugCategories=()=>{
                 <Tablehead heading1="Name" heading2="Description" />
                 <TableBody>
                     {
-                        categoryData?.map(({_id,name, description}: CategoryData)=><TableDataRow data1={name} data2={description} key={_id}/>)
+                        categoryData?.map(({ _id, name, description }: CategoryData) => <TableDataRow key={_id} data1={name} data2={description} />)
                     }
                 </TableBody>
            </TableContainer>
