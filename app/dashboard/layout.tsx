@@ -1,7 +1,7 @@
 "use client"
-import Navbar from "@/Components/NavBar";
-import SideNav from "@/Components/SideNav";
-import {SummaryCard} from "@/Components";
+import Navbar from "@/app/dashboard/Components/NavBar";
+import SideNav from "@/app/dashboard/Components/SideNav";
+import {SummaryCard} from "@/app/dashboard/Components";
 import { Provider } from "../Provider";
 
 

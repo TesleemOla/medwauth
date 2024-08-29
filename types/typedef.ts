@@ -54,6 +54,3 @@ export interface ClientData{
     
 }
 
-export interface apiData{
-    message: string
-}

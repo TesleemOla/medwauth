@@ -1,5 +1,4 @@
 "use client"
-import { hosturl } from "@/utils/host";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 

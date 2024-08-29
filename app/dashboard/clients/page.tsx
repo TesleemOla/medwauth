@@ -2,11 +2,11 @@
 import React from 'react'
 import { useSession } from "next-auth/react"
 
-import { Loading, TableDataRow, Tablehead, TableNav } from '@/Components'
+import { Loading, TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components'
 import { ClientData } from '@/types/typedef'
 import useSWR from 'swr'
 import { hosturl as url } from '@/utils/host'
-import { TableBody, TableContainer } from '@mui/material'
+import { TableBody, TableContainer, Table } from '@mui/material'
 
 
 const Clients = () => {
@@ -22,7 +22,7 @@ const Clients = () => {
     }
   }).then(res => res.json())
 
-  const { data: dataObj, error, isLoading} = useSWR(`${url}/api/customers`, fetcher)
+  const { data: dataObj, error, isLoading} = useSWR(session?`${url}/api/customers`:null, fetcher)
   
   let loadedData=[]
 
@@ -38,6 +38,7 @@ const Clients = () => {
     <div>
       <TableNav item="Customers" createLink="CreateClient" />
       <TableContainer>
+        <Table>
         <Tablehead heading1="Name" heading2="Email" heading3="Phone" heading4="Address" heading5="Handler" />
         
        <TableBody>
@@ -49,6 +50,7 @@ const Clients = () => {
        
        }
        </TableBody>
+       </Table>
       </TableContainer>
     </div>
   )

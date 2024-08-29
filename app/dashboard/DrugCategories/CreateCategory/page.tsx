@@ -1,9 +1,9 @@
 "use client"
-import { FormWrapper } from '@/Components'
+import { FormWrapper } from '@/app/dashboard/Components'
 import { hosturl } from '@/utils/host'
 import { useSession } from 'next-auth/react'
 import React from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormStatus } from 'react-dom'
 
 const CreateCategory = () => {
     const { pending } = useFormStatus()
@@ -20,7 +20,7 @@ const CreateCategory = () => {
       console.log(name, description)
       fetch(`${hosturl}/api/drugCategory`,{
         method: "POST",
-        body: {...bodyObj},
+        body: JSON.stringify(bodyObj),
 
         headers:{
           authorization: `Bearer ${token}`

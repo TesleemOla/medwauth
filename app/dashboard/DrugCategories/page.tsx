@@ -1,9 +1,8 @@
 "use client"
 import { useSession} from "next-auth/react";
-
-import { TableDataRow, Tablehead, TableNav } from "@/Components";
+import { TableDataRow, Tablehead, TableNav } from "@/app/dashboard/Components";
 import { CategoryData } from "@/types/typedef";
-import { TableBody, TableContainer } from "@mui/material";
+import { TableBody, TableContainer, Table } from "@mui/material";
 import { useData } from "@/utils/data";
 
 
@@ -11,7 +10,8 @@ import { useData } from "@/utils/data";
 const DrugCategories=()=>{
 
     const {data:session, status} = useSession()
-    const fetcher=(...args)=> fetch(...args,{
+
+    const fetcher=(str: string)=> fetch(str,{
         method: "GET",
         headers:{
             authorization: `Bearer ${session?.user?.token}`
@@ -19,7 +19,7 @@ const DrugCategories=()=>{
     })
     .then(res=> res.json())
 
-    const { dataObj: categoryData, isLoading, isError} = useData(`drugCategory`,fetcher)
+    const { dataObj: categoryData, isLoading, isError} = useData(`drugCategory`,fetcher, session)
     
     const loadedData=[]
    if(!isLoading && !isError) {
@@ -32,12 +32,14 @@ const DrugCategories=()=>{
         <div>
             <TableNav item="Categories" createLink="DrugCategories/CreateCategory" />
            <TableContainer>
+            <Table>
                 <Tablehead heading1="Name" heading2="Description" />
                 <TableBody>
                     {
-                        categoryData?.map(({_id,name, description}: CategoryData)=><TableDataRow data1={name} data2={description} key={_id}/>)
+                        categoryData?.map(({ _id, name, description }: CategoryData) => <TableDataRow key={_id} data1={name} data2={description} />)
                     }
                 </TableBody>
+            </Table>
            </TableContainer>
         </div>
     )

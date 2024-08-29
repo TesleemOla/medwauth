@@ -1,4 +1,5 @@
 import useSWR from "swr"
+import { useSession } from "next-auth/react"
 import { hosturl as url } from "./host"
 
 
@@ -22,12 +23,21 @@ export const fetcher = (str: string, token: string) => fetch(str, {
 })
     .then(res => res.json())
 
-export function useData(item: string, fetchfunc: any) {
-    const { data, error, isLoading } = useSWR(`${url}/api/${item}`, fetchfunc)
+export function useData(item: string, fetchfunc: any, session:any) {
+    const { data, error, isLoading } = useSWR(session?`${url}/api/${item}`:null, fetchfunc)
 
     return {
         dataObj: data?.data,
         isLoading,
         isError: error
+    }
+}
+
+export function useToken(){
+    const {data, status } = useSession()
+
+    return {
+        token: data?.user?.token,
+        status: status
     }
 }

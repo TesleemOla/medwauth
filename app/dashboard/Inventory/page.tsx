@@ -1,9 +1,9 @@
 'use client'
-import { TableDataRow, Tablehead, TableNav } from '@/Components'
+import { TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components'
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data'
-import { TableBody, TableContainer } from '@mui/material'
+import { TableBody, TableContainer, Table } from '@mui/material'
 
 
 
@@ -11,7 +11,7 @@ const Inventorypage = () => {
 
     const {data:session, status} = useSession()
 
-    const fetcher=(...args)=> fetch(...args,{
+    const fetcher=(str: string)=> fetch(str,{
         method: 'GET',
         headers: {
             authorization: 'Bearer ' + session?.user.token
@@ -19,7 +19,7 @@ const Inventorypage = () => {
     })
     .then(res=> res.json())
 
-    const { dataObj, isError, isLoading} = useData(`inventories`, fetcher)
+    const { dataObj, isError, isLoading} = useData(`inventories`, fetcher, session)
 
     const loadedData =[]
     if(status==="authenticated"){
@@ -37,6 +37,7 @@ const Inventorypage = () => {
           <TableNav item="Inventory" createLink={`/api/inventories`} />
 
         <TableContainer>
+            <Table>
             <Tablehead heading1="Name" heading2="Manufactured Date" heading3="Quantity in Stock" heading4="manufacturer" heading5={undefined} heading6={undefined} heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined}/>
          <TableBody>
             {
@@ -47,6 +48,7 @@ const Inventorypage = () => {
                      })
             }
             </TableBody>
+            </Table>
         </TableContainer>
    </div>
   )
