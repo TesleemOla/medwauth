@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useSession, signIn, signOut } from  "next-auth/react"
-import { hosturl } from '@/utils/host'
+
 
 const AuthButton = () => {
 

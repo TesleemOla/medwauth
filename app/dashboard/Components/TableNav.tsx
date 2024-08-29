@@ -1,6 +1,5 @@
 "use client"
 import { tableNav } from '@/types/typedef'
-import { hosturl } from '@/utils/host'
 import Link from 'next/link'
 
 

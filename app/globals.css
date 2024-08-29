@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .flex-center{
-    @apply flex justify-center align-middle
+@layer components{
+.flex-center{
+    @apply flex flex-col justify-center items-center
 }
-.flex-col{
+.flex-resp{
+    @apply flex flex-col text-sm sm:flex-row sm:text-lg
+}
+}
+
+/* .flex-col{
     @apply flex flex-col
 }
 .flex-row{

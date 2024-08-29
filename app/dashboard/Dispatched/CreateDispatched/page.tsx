@@ -1,5 +1,5 @@
 "use client"
-import { FormWrapper, InputContainer } from '@/Components'
+import { FormWrapper, InputContainer } from '@/app/dashboard/Components'
 import { useData } from '@/utils/data'
 import { useSession } from 'next-auth/react'
 import React from 'react'

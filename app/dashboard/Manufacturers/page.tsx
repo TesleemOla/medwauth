@@ -2,14 +2,14 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data';
-import { TableDataRow, Tablehead, TableNav } from '@/Components';
-import { TableBody, TableContainer } from '@mui/material';
+import { TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components';
+import { TableBody, TableContainer, Table } from '@mui/material';
 
 const ManufacturerPage = () => {
 
   const { data:session, status} = useSession();
   
-  const fetcher=(...args)=> fetch(...args,{
+  const fetcher=(str: string)=> fetch(str,{
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`
@@ -18,7 +18,7 @@ const ManufacturerPage = () => {
   })
   .then(res=>res.json())
 
-  const { dataObj, isError, isLoading}= useData("manufacturers", fetcher)
+  const { dataObj, isError, isLoading}= useData("manufacturers", fetcher, session)
 
   const loadedData =[];
 
@@ -32,6 +32,7 @@ const ManufacturerPage = () => {
       <div>
         <TableNav item="Manufacturers" createLink={`api/manufacturers`} />
         <TableContainer>
+          <Table>
           <Tablehead heading1="Name" heading2='phone' heading3="Address" heading4="Date Created"
         heading5="Date Modified" heading6="Status" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} /> 
       
@@ -43,6 +44,7 @@ const ManufacturerPage = () => {
             })
           }
         </TableBody>
+        </Table>
         </TableContainer>
       </div>
   )

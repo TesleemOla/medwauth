@@ -1,9 +1,9 @@
 "use client"
 
 import { useSession } from 'next-auth/react'
-import { Loading, SummaryCard, Tablehead, TableDataRow, TableNav } from '@/Components'
+import { Loading, SummaryCard, Tablehead, TableDataRow, TableNav } from '@/app/dashboard/Components'
 import { useData } from '@/utils/data'
-import { TableBody, TableContainer } from '@mui/material'
+import { Table, TableBody, TableContainer } from '@mui/material'
 import useSWR from 'swr'
 
 
@@ -21,9 +21,9 @@ const DashboardPage = () => {
     .then(res => (res.json()))
 
   const { data: user, error: userError, isLoading: userLoading} = useSWR("http://localhost:8000/user/all", fetcher)
-  const { dataObj, isError: drugError, isLoading: drugLoading } = useData("drugs", fetcher)
-  const { dataObj: Categories, isError: catError, isLoading: catLoad } = useData("drugCategory", fetcher)
-  const { dataObj: Inventory, isError: invError, isLoading: invLoading } = useData("inventories", fetcher)
+  const { dataObj, isError: drugError, isLoading: drugLoading } = useData("drugs", fetcher, session)
+  const { dataObj: Categories, isError: catError, isLoading: catLoad } = useData("drugCategory", fetcher, session)
+  const { dataObj: Inventory, isError: invError, isLoading: invLoading } = useData("inventories", fetcher, session)
 
   
   let loadedData = []
@@ -45,10 +45,10 @@ const DashboardPage = () => {
     inventoryData.push(Inventory[key])
     
   }
-  console.log(loadedData)
-  console.log(categoryData)
-  console.log(inventoryData)
-  console.log(userData)
+  session && (console.log(loadedData),
+  console.log(categoryData),
+  console.log(inventoryData),
+  console.log(userData))
 
   if (session) {
     // Render your dashboard content here
@@ -61,6 +61,7 @@ const DashboardPage = () => {
         {/* Let's try graphs for all the data points instead of tables */}
         <TableNav item="drugs" createLink="#" />
         <TableContainer>
+          <Table>
           <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
             heading4="treatmentFor" heading5="packageType" heading6="noInPackage" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} />
           <TableBody>
@@ -75,6 +76,7 @@ const DashboardPage = () => {
             }
 
           </TableBody>
+          </Table>
         </TableContainer>
       </div>
     )

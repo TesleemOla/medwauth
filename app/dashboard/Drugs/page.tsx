@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import { Tablehead, TableDataRow, Loading, TableNav } from '@/Components'
+import { Tablehead, TableDataRow, Loading, TableNav } from '@/app/dashboard/Components'
 import { useData } from '@/utils/data'
-import { TableBody, TableContainer } from '@mui/material'
+import { TableBody, TableContainer, Table } from '@mui/material'
 
 
 
@@ -19,7 +19,7 @@ const Drugs = () => {
     .then(res => res.json())
 
 
-  const { dataObj, isError, isLoading } = useData("drugs", fetcher)
+  const { dataObj, isError, isLoading } = useData("drugs", fetcher, session)
 
 
   let loadedData = []
@@ -33,8 +33,9 @@ const Drugs = () => {
   // Render your dashboard content here
   return (
     <div>
-      <TableNav item="drugs" createLink={`/api/drug`} />
+      <TableNav item="drugs" createLink={`Drugs/CreateDrug`} />
       <TableContainer>
+        <Table>
         <Tablehead heading1="drugName" heading2="categoryId" heading3="Description" heading4="ReOrder Level"
         heading5="treatmentFor" heading6="package Type" heading7="noInPackage" 
          />
@@ -55,7 +56,7 @@ const Drugs = () => {
         </TableBody>
         
        )}
-        
+        </Table>
       </TableContainer>
     </div>
   )

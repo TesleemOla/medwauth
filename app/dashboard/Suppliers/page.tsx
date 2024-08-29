@@ -2,8 +2,8 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { useData } from '@/utils/data'
-import { TableDataRow, Tablehead, TableNav } from '@/Components'
-import { TableBody, TableContainer } from '@mui/material'
+import { TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components'
+import { TableBody, TableContainer, Table } from '@mui/material'
 
 const Suppliers = () => {
   const { data: session, status} = useSession()
@@ -16,7 +16,7 @@ const Suppliers = () => {
   })
   .then(res=>res.json())
 
-  const { dataObj, isError, isLoading} = useData("suppliers", fetcher)
+  const { dataObj, isError, isLoading} = useData("suppliers", fetcher, session)
 
 
     const loadedData =[]
@@ -29,6 +29,7 @@ const Suppliers = () => {
     <div>
       <TableNav item="Suppliers" createLink={`/api/supplier/new`} />
       <TableContainer>
+        <Table>
         <Tablehead heading1="Name" heading2="Address" heading3="Phone" heading4="userId" />
        
        <TableBody>
@@ -38,6 +39,7 @@ const Suppliers = () => {
           })
         }
         </TableBody>
+        </Table>
       </TableContainer>
     </div>
   )

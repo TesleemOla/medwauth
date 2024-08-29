@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import { useSession } from 'next-auth/react'
-import { TableDataRow, Tablehead, TableNav } from '@/Components'
+import { TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components'
 import useSWR from 'swr'
 import { hosturl } from '@/utils/host'
-import { TableBody, TableContainer } from '@mui/material'
+import { TableBody, TableContainer, Table } from '@mui/material'
 import { useData } from '@/utils/data'
 
 
@@ -23,11 +23,11 @@ const Dispatched = () => {
     })
       .then(res => res.json())
   }
-  const { data: dataObj, error, isLoading } = useSWR(`${hosturl}/api/dispatched`, fetcher)
+  const { dataObj, isError, isLoading } = useData(`/dispatched`, fetcher, session)
   
   
   const loadedData = []
-  if (!error && !isLoading) {
+  if (!isError && !isLoading) {
     for (const key in dataObj?.data) {
       loadedData.push(dataObj.data[key])
     }
@@ -40,6 +40,7 @@ const Dispatched = () => {
     <div>
       <TableNav createLink="Dispatched/CreateDispatched" item="Dispatched" />
       <TableContainer>
+        <Table>
         <Tablehead heading1="Client" heading2="Inventory" heading3="Quantity" heading4="Date Created"
           heading5="Date Updated" />
 
@@ -53,6 +54,7 @@ const Dispatched = () => {
             })
           }
         </TableBody>
+        </Table>
       </TableContainer>
     </div>
   )
