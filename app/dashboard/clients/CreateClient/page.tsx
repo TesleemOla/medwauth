@@ -1,49 +1,103 @@
 "use client"
-import Overlay from '@/app/dashboard/Components/Overlay'
 import React from 'react'
-import { useFormStatus } from 'react-dom'
+import { hosturl } from '@/utils/host'
+import { FormWrapper, InputContainer, SubmitBtn } from '../../Components'
+import { useSession } from 'next-auth/react'
+import useSWR from 'swr'
 
-const CreateClient = () => {
 
-  const {pending } = useFormStatus()
+interface userType {
+  firstName: string,
+  lastName: string,
+  _id: string
+}
+export default function CreateClient(){
 
-  console.log(pending)
+  const { data: session, status } = useSession()
+  const token = session?.user?.token
+ function createClient(formData:FormData){
+
+    const customerName = formData.get("customer_name")
+    const contactEmail = formData.get("contactEmail")
+    const phoneNumber = formData.get("phoneNumber")
+    const officeAddress = formData.get("officeAddress")
+    const city = formData.get("city")
+    const state = formData.get("state")
+    const adminId = formData.get("adminId")
+
+  const dataObj = {customerName, city, state, adminId, contactEmail, phoneNumber, officeAddress}
+  console.log(dataObj)
+   fetch(`${hosturl}/api/customer/create`, {
+     method: "POST",
+    body: JSON.stringify(dataObj),
+     headers: {
+       'content-Type': "application/json",
+       authorization: `Bearer ${token}`
+     }
+   })
+   .then(res=> res.json())
+   .then(res=> alert(res.success? "New client Created": res.error))
+   .catch(error=> alert("Error creating a new client"))
+}
+  const fetcher = (str:string)=> fetch(str,{
+    method:"GET",
+    headers: {
+      authorization: `Bearer ${token}`
+    },
+    cache: "force-cache"
+  })
+  .then(res=> res.json())
+  const { data: userObj, error, isLoading } = useSWR(session?`${hosturl}/user/all`:null,fetcher)
+  
+  const adminUsers = userObj?.data?.filter(({access}:{access:string})=> access==="admin")
+ 
+
+ 
   return (
-    <Overlay>
+    <FormWrapper>
     <div className="text-center">
       <p>Create Client</p>
-      <form className="mb-6" action="/" method="post">
+      <form className="mb-6 w-3/5 mx-auto" action={createClient} >
         <div className="flex flex-col mb-4">
-          <label className="mb-2 font-bold text-lg text-gray-700" htmlFor="medicine_name">Client Name</label>
-          <input className="border py-2 px-3 text-gray-900" type="text" name="medicine_name" id="medicine_name" required />
+          <label className="mb-2 font-bold text-lg text-gray-700" htmlFor="customer_name">Client Name</label>
+          <input className="border py-2 px-3 text-gray-900" type="text" name="customer_name" id="customer_name" required />
         </div>
         
         <div className="mb-4">
           <label className="block text-gray-700 font-bold" htmlFor="email">Email</label>
-          <input className="border py-2 px-3 w-full" type="text" name="email" id="medicine_name" required />
+          <input className="border py-2 px-3 w-full" type="email" name="contactEmail" id="email" required />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold" htmlFor="office">Office Address</label>
-          <input className="border py-2 px-3 w-full" type="text" name="office" id="medicine_name" required />
+          <input className="border py-2 px-3 w-full" type="text" name="officeAddress" id="office" required />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold" htmlFor="state">State</label>
-          <input className="border py-2 px-3 w-full" type="text" name="state" id="medicine_name" required />
+        <div className="mb-4 flex flex-auto justify-between">
+          <InputContainer htmlFor="state" type="text" name="state" placeholder="state" required label='State' />
+          <InputContainer htmlFor='city' label='City' name='city' placeholder='City' type='text' required />
         </div>
-        <div>
-          <label htmlFor="admin">Select Admin</label>
-          <select id="admin">
-            <option value=""></option>
+          <div className="mb-4 flex flex-auto justify-between items-center">
+          <InputContainer htmlFor="phoneNumber" label="phoneNumber" name="phoneNumber" placeholder="Phone" type="text" required />
+   
+        <div className="flex flex-col flex-1">
+              <label htmlFor="admin" className="block text-gray-700 font-bold mb-2">Select Admin</label>
+              <select id="admin" name="adminId" className="border py-2 px-3">
+            {
+                adminUsers?.map(({ firstName, lastName, _id }:userType) => <option value={_id} key={_id}>{firstName} {lastName}</option>)
+            }
+            
           </select>
         </div>
-        <button className="block bg-purple-700 hover:bg-purple-800 text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
+        </div>
+        <SubmitBtn disState="Creating ....">
+          Create Client
+        </SubmitBtn>
       </form>
     </div>
-    </Overlay>
+    </FormWrapper>
   )
 }
 
-export default CreateClient
+
 // customerName, contactEmail, phoneNumber, officeAddress, state, adminId
 //   < !--
 //   This example requires some changes to your config:

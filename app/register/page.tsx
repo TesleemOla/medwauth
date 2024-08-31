@@ -10,7 +10,7 @@ import SubmitBtn from '@/app/dashboard/Components/submitbtn'
 const Register = () => {
 
 
-  async function registerHandler(formData: any){
+  async function registerHandler(formData: FormData){
     "use server"
     const firstName = formData.get("firstName")
     const lastName = formData.get("lastName")

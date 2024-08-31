@@ -12,6 +12,7 @@ import Overlay from "./Overlay";
 import PopUp from "./PopUp";
 import FormWrapper from "./FormWrapper";
 import InputContainer from "./InputContainer";
+import SubmitBtn from "./submitbtn"
 
 
 
@@ -31,5 +32,5 @@ export {
     PopUp,
     FormWrapper,
     InputContainer,
-
+    SubmitBtn
 }
