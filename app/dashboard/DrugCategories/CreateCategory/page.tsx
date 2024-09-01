@@ -1,23 +1,23 @@
 "use client"
-import { FormWrapper } from '@/app/dashboard/Components'
+import { FormWrapper, SubmitBtn } from '@/app/dashboard/Components'
 import { hosturl } from '@/utils/host'
 import { useSession } from 'next-auth/react'
 import React from 'react'
-import { useFormStatus } from 'react-dom'
+
 
 const CreateCategory = () => {
-    const { pending } = useFormStatus()
+
       const {data: session, status} = useSession() 
       const token = session?.user?.token
 
-    function creator(formData: any){
+    function creator(formData: FormData){
       const name = formData.get('name')
       const description = formData.get('description')
       const bodyObj = {
         name,
         description
       }
-      console.log(name, description)
+
       fetch(`${hosturl}/api/drugCategory`,{
         method: "POST",
         body: JSON.stringify(bodyObj),
@@ -26,7 +26,12 @@ const CreateCategory = () => {
           authorization: `Bearer ${token}`
         }
       })
-        .then(res=> res)
+        .then(res=> {
+          if(res.ok){
+            alert(`New category created`)
+          }
+        })
+        .catch(err=> alert(err.message))
       
     } 
 
@@ -42,9 +47,9 @@ const CreateCategory = () => {
                   <label htmlFor="description">Description</label>
                   <input type="text" name="description" id="description" placeholder="Description" />
               </div>
-              <button aria-disabled={pending} type="submit" className="bg-blue-900 text-white p-2">
-                { pending? "Creating...": "Create" }
-              </button>
+              <SubmitBtn disState="Creating...">
+                Create
+              </SubmitBtn>
           </form>
     
     </FormWrapper>

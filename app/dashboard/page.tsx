@@ -17,7 +17,8 @@ const DashboardPage = () => {
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`
-    }
+    },
+    cache:"force-cache"
   })
     .then(res => (res.json()))
 
