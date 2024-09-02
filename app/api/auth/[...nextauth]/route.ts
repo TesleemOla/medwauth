@@ -1,7 +1,9 @@
 
-import NextAuth from "next-auth"
+import NextAuth, { Session} from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { hosturl } from "@/utils/host"
+import { AdapterUser } from "next-auth/adapters"
+import { JWT } from "next-auth/jwt"
 
 
 
@@ -46,8 +48,9 @@ const handler = NextAuth({
         async jwt({ token, user}){
             return { ...token, ...user}
         },
-        async session({ session, user, token}){
-            session.user = token;
+        
+        async session({ session, user, token }){
+            // session.user = token;
             return session
         }
     },
