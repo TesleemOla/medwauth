@@ -27,7 +27,7 @@ const Suppliers = () => {
   }
   return (
     <div>
-      <TableNav item="Suppliers" createLink={`/api/supplier/new`} />
+      <TableNav item="Suppliers" createLink={`Suppliers/CreateSupplier`} />
       <TableContainer>
         <Table>
         <Tablehead heading1="Name" heading2="Address" heading3="Phone" heading4="userId" />

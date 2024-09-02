@@ -8,8 +8,8 @@ import PopUp from "./PopUp";
  interface dataType {
     data1: String | number,
     data2: String | number,
-    data3: String | number,
-    data4: String | number,
+    data3: String | number | null,
+    data4: String | number | null,
     data5?: String | number | null,
     data6?: String | number | null,
      data7?: String | null,

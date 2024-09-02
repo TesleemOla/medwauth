@@ -1,10 +1,11 @@
 "use client"
 
 import { useSession } from 'next-auth/react'
-import { Loading, SummaryCard, Tablehead, TableDataRow, TableNav } from '@/app/dashboard/Components'
+import { Loading } from '@/app/dashboard/Components'
 import { useData } from '@/utils/data'
-import { Table, TableBody, TableContainer } from '@mui/material'
-import useSWR from 'swr'
+import { PieChart } from '@mui/x-charts/PieChart';
+
+
 
 
 
@@ -16,73 +17,45 @@ const DashboardPage = () => {
     method: 'GET',
     headers: {
       authorization: `Bearer ${session?.user.token}`
-    }
+    },
+    cache:"force-cache"
   })
     .then(res => (res.json()))
 
-  const { data: user, error: userError, isLoading: userLoading} = useSWR("http://localhost:8000/user/all", fetcher)
-  const { dataObj, isError: drugError, isLoading: drugLoading } = useData("drugs", fetcher, session)
-  const { dataObj: Categories, isError: catError, isLoading: catLoad } = useData("drugCategory", fetcher, session)
-  const { dataObj: Inventory, isError: invError, isLoading: invLoading } = useData("inventories", fetcher, session)
 
+  const { dataObj: countData, isError: countError, isLoading: countLoading } = useData("summary/counts", fetcher, session)
+  const { dataObj: categories, isError: catError, isLoading: catLoad } = useData("summary/drugs/categories", fetcher, session)
+  const { dataObj: packageData, isError: packageError, isLoading: packageLoading } = useData("summary/drugs/package", fetcher, session)
+  const { dataObj: userCount, isError: userError, isLoading: userLoading } = useData(`summary/users/type`, fetcher, session)
   
-  let loadedData = []
-  for (const key in dataObj) {
-    loadedData.push(dataObj[key])
-  }
-  let userData = []
-   for (const key in user?.data){
-    userData.push(user.data[key])
-   }
 
-  let categoryData = [];
-  for (const key in Categories) {
-    categoryData.push(Categories[key])
-  }
 
-  let inventoryData = [];
-  for (const key in Inventory) {
-    inventoryData.push(Inventory[key])
+
+
+  if (!session) return <Loading />
     
-  }
-  session && (console.log(loadedData),
-  console.log(categoryData),
-  console.log(inventoryData),
-  console.log(userData))
-
-  if (session) {
-    // Render your dashboard content here
     return (
       <div>
         <div className="flex my-4 ">
          
         </div>
-
+          {JSON.stringify(countData)} <br/>
+          {JSON.stringify(categories)} <br/>
+          {JSON.stringify(packageData)} <br/>
+          {JSON.stringify(userCount)}
         {/* Let's try graphs for all the data points instead of tables */}
-        <TableNav item="drugs" createLink="#" />
-        <TableContainer>
-          <Table>
-          <Tablehead heading1="drugName" heading2="categoryId" heading3="Description"
-            heading4="treatmentFor" heading5="packageType" heading6="noInPackage" heading7={undefined} heading8={undefined} heading9={undefined} heading10={undefined} />
-          <TableBody>
-
-            {
-              loadedData.map(({ _id, categoryId, drugName,
-                drugDescription, treatmentUsedFor, packageType, noInPackage
-              }) => {
-                return <TableDataRow key={_id} data1={drugName} data2={categoryId.name} data3={drugDescription}
-                  data4={treatmentUsedFor} data5={packageType} data6={noInPackage} data7={null} data8={null} data9={null} data10={null} />
-              })
-            }
-
-          </TableBody>
-          </Table>
-        </TableContainer>
+      
+        {/* <PieChart
+          series={[{ data: countData}]}
+          {...pieParams}
+          colors={['red', 'blue', 'green',"yellow"]} 
+        /> */}
+        
       </div>
     )
-  } return <Loading />
+  } 
 
-}
+
 
 export default DashboardPage
 

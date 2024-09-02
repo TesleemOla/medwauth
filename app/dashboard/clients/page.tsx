@@ -15,7 +15,7 @@ const Clients = () => {
   const { data: session, status} = useSession()
 
 
-  const fetcher = (...args) => fetch(...args,{
+  const fetcher = (str:string) => fetch(str,{
     method: "GET",
     headers:{
       authorization: `Bearer ${session?.user.token}`
@@ -36,7 +36,7 @@ const Clients = () => {
 
   return (
     <div>
-      <TableNav item="Customers" createLink="CreateClient" />
+      <TableNav item="Customers" createLink="clients/CreateClient" />
       <TableContainer>
         <Table>
         <Tablehead heading1="Name" heading2="Email" heading3="Phone" heading4="Address" heading5="Handler" />
