@@ -36,7 +36,7 @@ const DrugCategories=()=>{
                 <Tablehead heading1="Name" heading2="Description" />
                 <TableBody>
                     {
-                        categoryData?.map(({ _id, name, description }: CategoryData) => <TableDataRow key={_id} data1={name} data2={description} />)
+                        categoryData?.map(({ _id, name, description }: CategoryData) => <TableDataRow key={_id} data1={name} data2={description} data3={null} data4={null} />)
                     }
                 </TableBody>
             </Table>

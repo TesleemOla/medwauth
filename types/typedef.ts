@@ -37,7 +37,7 @@ export interface DrugDataHeadings {
 }
 
 export interface CategoryData{
-    _id: String,
+    _id: any,
     name: String,
     description: String
 }
