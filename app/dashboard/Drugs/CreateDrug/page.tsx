@@ -50,7 +50,8 @@ const CreateDrug = () => {
         .catch(err=>   alert(err.message))
     }
     
-    if(isLoading) return <Loading /> 
+    if(isLoading) {
+        return <Loading /> }
   return (
     <FormWrapper>
         <p>Create New Drug</p>
