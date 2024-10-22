@@ -44,7 +44,7 @@ const Clients = () => {
        <TableBody>
        {
         loadedData?.map(({ _id, customerName, contactEmail, phoneNumber, officeAddress, state, adminId}: ClientData)=>{
-          return <TableDataRow key={_id} data1={customerName} data2={contactEmail} data3={phoneNumber}
+          return <TableDataRow key={_id.toString()} data1={customerName} data2={contactEmail} data3={phoneNumber}
           data4={state}  />
         })
        

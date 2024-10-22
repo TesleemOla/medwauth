@@ -1,8 +1,9 @@
-"use client"
+// "use client"
 import Navbar from "@/app/dashboard/Components/NavBar";
 import SideNav from "@/app/dashboard/Components/SideNav";
-import {SummaryCard} from "@/app/dashboard/Components";
+// import {SummaryCard} from "@/app/dashboard/Components";
 import { Provider } from "../Provider";
+
 
 
 
@@ -11,12 +12,10 @@ import { Provider } from "../Provider";
 export default function DashboardLayout({ children }:any) {
     // Render your dashboard content here
 
-
+    
     return (
     <Provider>
-        {/* <div className="flex lg:flex-row">
-            <SummaryCard Headdet="Home" data="Dashboard" icon="H"/>
-        </div> */}
+        
         <div className="mx-10">
                 <Navbar />
                 <section className="flex flex-row gap-10 justify-left mr-5 sm:mr-0 mt-20">
