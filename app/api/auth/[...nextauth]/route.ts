@@ -6,6 +6,7 @@ import { hosturl } from "@/utils/host"
 
 
 const handler = NextAuth({
+    secret: process.env.NEXTAUTH_SECRET,
     providers:[
         CredentialsProvider({
             name: "Credentials",
@@ -53,7 +54,6 @@ const handler = NextAuth({
     pages:{
         signIn: "/login"
     },
-    secret: process.env.AUTH_SECRET
 })
 
 export { handler as GET, handler as POST }
