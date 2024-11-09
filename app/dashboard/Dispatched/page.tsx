@@ -2,8 +2,6 @@
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import { TableDataRow, Tablehead, TableNav } from '@/app/dashboard/Components'
-import useSWR from 'swr'
-import { hosturl } from '@/utils/host'
 import { TableBody, TableContainer, Table } from '@mui/material'
 import { useData } from '@/utils/data'
 

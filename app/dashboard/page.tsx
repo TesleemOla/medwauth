@@ -1,9 +1,8 @@
 "use client"
 
 import { useSession } from 'next-auth/react'
-import { Loading } from '@/app/dashboard/Components'
 import { useData } from '@/utils/data'
-import { PieChart } from '@mui/x-charts/PieChart';
+
 
 
 
@@ -32,7 +31,7 @@ const DashboardPage = () => {
 
 
 
-  if (!session) return <Loading />
+  if (!session) return <p>Please login to proceed</p>
     
     return (
       <div>

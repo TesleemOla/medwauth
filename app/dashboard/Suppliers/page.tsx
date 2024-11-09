@@ -8,7 +8,7 @@ import { TableBody, TableContainer, Table } from '@mui/material'
 const Suppliers = () => {
   const { data: session, status} = useSession()
 
-  const fetcher =(...args)=>fetch(...args,{
+  const fetcher =(str: string | URL | Request)=>fetch(str,{
     method: 'GET',
     headers:{
       authorization: `Bearer ${session?.user.token}`
