@@ -2,10 +2,6 @@
 import NextAuth, { Session} from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { hosturl } from "@/utils/host"
-import { AdapterUser } from "next-auth/adapters"
-import { JWT } from "next-auth/jwt"
-
-
 
 
 

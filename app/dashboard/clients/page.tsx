@@ -12,7 +12,7 @@ import { TableBody, TableContainer, Table } from '@mui/material'
 const Clients = () => {
   
 
-  const { data: session, status} = useSession()
+  const { data: session} = useSession()
 
 
   const fetcher = (str:string) => fetch(str,{

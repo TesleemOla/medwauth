@@ -11,14 +11,7 @@ const Hamburger = () => {
           onClick={()=> setIsOpen(!isOpen)}
           >
         {
-            isOpen ? 
-                
-                  <GiHamburgerMenu />
-                
-                :
-               
-                  <IoClose />
-          
+            isOpen ? <GiHamburgerMenu /> : <IoClose />
         }
         </button>
     </div>
