@@ -1,8 +1,6 @@
 
 import React from 'react'
 import { InputContainer } from '@/app/dashboard/Components'
-
-
 import { hosturl } from '@/utils/host'
 import SubmitBtn from '@/app/dashboard/Components/submitbtn'
 
@@ -44,14 +42,16 @@ const Register = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen border-solid border-black border-1px shadow-zinc-600 ">
      
-      <form className="gap-3 w-1/3" action={registerHandler}>
-        <div className="flex flex-row flex-wrap gap-4">
+      <form className="w-1/3" action={registerHandler}>
+        <div>
           <InputContainer htmlFor="firstName" name="firstName" placeholder="Jonh" required={true} label="First Name" type="text" />
           <InputContainer htmlFor="lastName" name="lastName" placeholder="Deo" required={true} label="Last Name"  type="text" />
         </div>
-        <InputContainer htmlFor="email" name="email" placeholder="Email" required={true} label="Email"  type="email" />
-        <InputContainer htmlFor="password" name="password" placeholder="Password" required={true} label="Password" type="password" />
-        <SubmitBtn disState='Please wait ...'>Register</SubmitBtn>
+          <InputContainer htmlFor="email" name="email" placeholder="Email" required={true} label="Email"  type="email" />
+          <InputContainer htmlFor="password" name="password" placeholder="Password" required={true} label="Password" type="password" />
+        <div className="text-center">
+          <SubmitBtn disState='Please wait ...'>Register</SubmitBtn>
+        </div>
       </form>
     </div>
   )

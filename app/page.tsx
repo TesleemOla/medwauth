@@ -8,9 +8,9 @@ export default function Home() {
  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 bg-[url('/images/pharm1.jpg')]  bg-cover">
-      <Link href="/" className="text-white mb-4">Home
+      <Link href="/" className="text-white font-bold mb-4">Home
       </Link>
-      <Link href="/dashboard" className="mb-4">Dashboard
+      <Link href="/dashboard" className="text-white font-bold mb-4">Dashboard
       </Link>
       <button
         onClick={() => signOut()}
