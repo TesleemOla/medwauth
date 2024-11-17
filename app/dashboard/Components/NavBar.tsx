@@ -9,11 +9,11 @@ import Link from "next/link";
 const Navbar = () => {
   
     return (
-        <div className="w-full h-20 bg-white fixed top-0">
-            <div className="container mx-auto px-4 h-full">
-                <div className="flex justify-between items-center h-full">
+        <div className="w-full h-20 bg-white sticky top-0 left-0">
+            <div className="container lg:mx-auto px-4 h-full">
+                <div className="flex gap-x-3 lg:justify-between items-center h-full">
                     
-                    <ul className="flex gap-x-6">
+                    <ul className="contents">
                         <li className="text-xl font-bold text-blue-500">
                             <Link href="/">
                                 PharmaCol
@@ -30,7 +30,6 @@ const Navbar = () => {
                             </Link>
                         </li>
                     </ul>
-                    {/* <Button /> Your button component */}
                     <AuthButton />
                 </div>
             </div>

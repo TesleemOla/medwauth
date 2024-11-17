@@ -11,7 +11,7 @@ interface listItem {
 const Navlist = ({children, path}:listItem) => {
   const pathname = usePathname()
 
-  const isActive = pathname === path
+  const isActive = pathname
 
   // console.log(isActive)
   return (
